@@ -26,6 +26,10 @@ public class FacturacionServicio {
     public FacturacionEntidad crearFactura(FacturacionEntidad factura) {
         return facturacionRepositorio.save(factura);
     }
+    public List<FacturacionEntidad> obtenerFacturasPorClienteId(String idCliente) {
+        return facturacionRepositorio.findByIdCliente(idCliente);
+    }
+
 
     public Optional<FacturacionEntidad> actualizarFactura(UUID id, FacturacionEntidad facturaActualizada) {
         return facturacionRepositorio.findById(id)
@@ -33,8 +37,7 @@ public class FacturacionServicio {
                     factura.setConsumoTotal(facturaActualizada.getConsumoTotal());
                     factura.setCostoTotal(facturaActualizada.getCostoTotal());
                     factura.setEstadoPago(facturaActualizada.getEstadoPago());
-                    factura.setFechaPago(facturaActualizada.getFechaPago());
-                    factura.setPeriodoFacturado(facturaActualizada.getPeriodoFacturado()); // Verifica que este método exista
+                    factura.setPeriodoFacturado(facturaActualizada.getPeriodoFacturado());
                     return facturacionRepositorio.save(factura);
                 });
     }
