@@ -15,7 +15,7 @@ public class ClienteRemoteService {
     }
 
     public ClienteDTO obtenerClientePorCorreo(String correo) {
-        String url = "http://localhost:8080/api/admin/clientes/correo/" + correo;
+        String url = "http://energiainteligente.ddns.net:8080/api/admin/clientes/correo/" + correo;
         try {
             ResponseEntity<ClienteDTO> response = restTemplate.getForEntity(url, ClienteDTO.class);
             return response.getBody();
